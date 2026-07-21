@@ -6,22 +6,25 @@
 
 Thứ tự chạy tổng quát:
 
--- Bước 1: 01_data_cleaning_validation.sql
+#### Bước 1: 01_data_cleaning_validation.sql
 
   -- Mục đích: Kiểm tra tổng quan bảng gốc trước khi phân tích — 	Kiểm tra phạm vi dữ liệu, giá trị bất thường, missing value trên bảng gốc
 
   -- Output: Không tạo bảng — chỉ để xác nhận dữ liệu sạch trước khi đi tiếp vào phân tích
 
--- Bước 2: 02_session_table_view.sql
+#### Bước 2: 02_session_table_view.sql
 
   -- Mục đích: Gộp dữ liệu về cấp session, gắn nhãn price_tier, speed_tier, phan_khuc_KH
 
   -- Output: View session_table — nguồn chính cho toàn bộ measure DAX trong Power BI
 
--- Bước 3: 03_gate_ztest_inputs.sql
+#### Bước 3: 03_gate_ztest_inputs.sql
 
   -- Mục đích: Tính n (cỡ mẫu)/x (số sự kiện)/rate (tỷ lệ) theo Gate 1 (thêm giỏ hàng) và Gate 2 (chốt đơn) cho               4 biến: device_type, traffic_source, channel, price_tier
 
   --Output: Kết quả n/x/rate — đưa sang Excel (file Z-test_inputs.xlsx) để tính z-score và p-value
 
--- Lưu ý: z-score và p-value của two-proportion z-test không được tính trong SQL bước tính z/p-value được thực hiện trên Excel, sau đó kết quả tổng hợp (bao gồm cả spread và kết luận Sig./Not Sig.) được nhập vào Power BI làm bảng Bang_Ztest
+#### Z-test_inputs.xlsx
+Mục đích: tính z-score và p-value của two-proportion z-test từ kết quả 03_gate_ztest_inputs.sql, sau đó kết quả tổng hợp (bao gồm cả spread và kết luận Sig./Not Sig.) được nhập vào Power BI làm bảng Bang_Ztest
+
+--============================================================
